@@ -31,6 +31,7 @@ shinyUI(fluidPage(
       tags$head( tags$script(src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML-full", type = 'text/javascript'),
                  tags$script( "MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});", type='text/x-mathjax-config')
       ),
+      withMathJax(),
       h4("Centralne Twierdzenie Graniczne"),
       p("Centralne Twierdzenie graniczne pozwala nam na",
         strong("przybliżenie"), "rozkładu
@@ -38,11 +39,10 @@ shinyUI(fluidPage(
         pochodzą", strong("w przybliżeniu"), "z rozkładu normalnego."),
       p("Zwizualizujemy teraz działanie tego twierdzenia.
         Procedura jaką wykonujemy wygląda następująco.
-        Losujemy próbę wielkości", strong("n"), " z wybranego rozkładu", 
-        HTML("$X_i,  i=1,...,n$"), 
-        "Następnie liczymy średnią z próby",
-        HTML("$\\frac{\\sum_{i=1}^n X_i}{n}$"),
-        "Powyższe obliczenia powtarzamy", strong("m"), "razy.",
+        Losujemy próbę wielkości", strong("n"), " z wybranego rozkładu"), 
+        helpText('$$X_i,  i=1,...,n$$'),
+        helpText("Następnie liczymy średnią z próby $\\frac{\\sum_{i=1}^n X_i}{n}$"),
+        p("Powyższe obliczenia powtarzamy", strong("m"), "razy.",
         "Wyniki przedstawiamy na histogramie."),
       plotOutput("distPlot"),
       p(strong("Centralne twierdzenie graniczne"),

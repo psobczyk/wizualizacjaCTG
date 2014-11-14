@@ -21,6 +21,9 @@ shinyServer(function(input, output) {
   })
   
   output$distPlot <- renderPlot({
+    if (is.null(input$dynamic))
+      return()
+    x <- NULL
     if ( (input$radio == "Wykładniczy") & (input$dynamic>0)) 
         x <- vapply(1:input$m, function(dummy) mean(rexp(input$n, input$dynamic)), 0.1)
     else if (input$radio == "Normalny") 
@@ -29,6 +32,8 @@ shinyServer(function(input, output) {
        x <- vapply(1:input$m, function(dummy) rbinom(1, input$n, input$dynamic)/input$n, 0.1)   
     
     # draw the histogram with the specified number of bins
+    if (is.null(x))
+      return()
     if (any(is.na(x)))
       return()
     

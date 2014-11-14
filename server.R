@@ -1,9 +1,5 @@
 
-# This is the server logic for a Shiny web application.
-# You can find out more about building applications with Shiny here:
-#
-# http://shiny.rstudio.com
-#
+# Piotr Sobczyk, PWr
 
 library(shiny)
 
@@ -12,7 +8,7 @@ shinyServer(function(input, output) {
     if (is.null(input$radio))
       return()
     
-    # Depending on input$input_type, we'll generate a different
+    # Depending on input$radio, we'll generate a different
     # UI component and send it to the client.
     switch(input$radio,
            "Wykładniczy" = sliderInput("dynamic", HTML("Parametr &lambda;:"),
@@ -25,9 +21,6 @@ shinyServer(function(input, output) {
   })
   
   output$distPlot <- renderPlot({
-    # generate bins based on input$bins from ui.R
-    print(input$dynamic)
-    print(input$n)
     if ( (input$radio == "Wykładniczy") & (input$dynamic>0)) 
         x <- vapply(1:input$m, function(dummy) mean(rexp(input$n, input$dynamic)), 0.1)
     else if (input$radio == "Normalny") 

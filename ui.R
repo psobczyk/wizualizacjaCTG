@@ -1,9 +1,5 @@
 
-# This is the user-interface definition of a Shiny web application.
-# You can find out more about building applications with Shiny here:
-#
-# http://shiny.rstudio.com
-#
+# Piotr Sobczyk, PWr
 
 library(shiny)
 
@@ -38,7 +34,7 @@ shinyUI(fluidPage(
       h4("Centralne Twierdzenie Graniczne"),
       p("Centralne Twierdzenie graniczne pozwala nam na",
         strong("przybliżenie"), "rozkładu
-      średniej z próby rozkładem normalnym. To znaczy średnie z prób
+      średniej z próby rozkładem normalnym. To znaczy, że średnie z prób
         pochodzą", strong("w przybliżeniu"), "z rozkładu normalnego."),
       p("Zwizualizujemy teraz działanie tego twierdzenia.
         Procedura jaką wykonujemy wygląda następująco.
@@ -50,15 +46,16 @@ shinyUI(fluidPage(
         "Wyniki przedstawiamy na histogramie."),
       plotOutput("distPlot"),
       p(strong("Centralne twierdzenie graniczne"),
-        "mówi nam, że możemy przybliżać pewne rozkłady za pomocą rozkładu normalnego.",
-        "Jak należy w praktyce myśleć o tym, że jakieś wartości pochodzą z danego
-        rozkładu? W taki, że jeśli wylosujemy bardzo wiele liczb z tego rozkładu,
-        ich liczba w powyższej symulacji jest dana przez parametr", strong("m"),
+        "mówi nam, że możemy przybliżać pewne rozkłady za pomocą rozkładu normalnego.
+        Aby to przybliżenie dobrze działało wymagamy aby", strong("n"), "było duże.",
+        "Jak należy w praktyce myśleć o tym, że wartości pochodzą z
+        rozkładu normalnego? W taki, że jeśli wylosujemy bardzo wiele liczb,
+        ich liczba w powyższej symulacji jest dana przez parametr", strong("m,"),
         "to ich histogram będzie bliski teoretycznemu histogramowi dla rozkładu
         normalnego."),
       h4("Uwaga"),
-      p("Histogramy nie są idealnie dopasowane do teoretycznego rozkładu,
-        nawet dla rozkładu normalnego, kiedy m jest nieduże.")
+      p("Kiedy", strong("m,"), "jest nieduże, to histogramy nie są idealnie 
+        dopasowane do teoretycznego rozkładu, nawet dla rozkładu normalnego.")
     )
   )
 ))
